@@ -1,35 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => { 
+  document.addEventListener("DOMContentLoaded", () => { 
 
     let InputValue = ""
-//     const newQuote = document.querySelector('#new-description')
-//     newQuote.addEventListener("input", (e) => {
-//         e.preventDefault();
-//     InputValue = e.target.value
-//    })
+    const newQuote = document.querySelector('#new-description')
+    newQuote.addEventListener("input", (e) => {
+        e.preventDefault();
+    InputValue = e.target.value
+   })
 
-  const post =document.querySelector('#post-button')
-  // post or submit?
-  post.addEventListener("post", function(e){
+  const post =document.querySelector('#form')
+ 
+  post.addEventListener("submit", function(e){
     e.preventDefault();
     console.log(InputValue)
-    // addQuote() 
+    addQuote() 
   })
   
-//    const ulist=document.querySelector('#quotes')
+   const ulist=document.querySelector('#quotes')
 
-//    function addQuote(){
-//       const li=document.createElement('li')
-//       li.textContent=InputValue
-//       console.log(li)
+   function addQuote(){
+      const li=document.createElement('li')
+      li.textContent=InputValue
+      console.log(li)
 
-//       const button = document.createElement('button')
-//       button.textContent = "X"
+      const button = document.createElement('button')
+      button.textContent = "x"
 
-//       button.addEventListener('click', (e) =>{
-//         e.target.parentNode.remove();
-  
-//       ulist.append(li);
-//       li.append(button);
-//       inputElement.value=""
-//   })
-/
+      const like = document.createElement("i")
+      //create icon
+      
+
+      like.classList.add("fa")
+      like.classList.add("fa-battery-full")
+
+      like.addEventListener('click', (e)=> {
+        e.target.style.color="green"
+
+      })
+
+      button.addEventListener('click', (e) =>{
+        e.target.parentNode.remove();
+    })
+    newQuote.value=""
+    li.append(button,like); 
+    ulist.append(li);   
+   } 
+})
